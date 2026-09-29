@@ -17,7 +17,7 @@ if [[ ! -x "$FLUTTER_BIN" ]]; then
   mkdir -p "$FLUTTER_ROOT"
   tar -xJf "$DOWNLOAD_DIR/$FLUTTER_ARCHIVE" --strip-components=1 -C "$FLUTTER_ROOT"
 fi
-
+git config --global --add safe.directory "$FLUTTER_ROOT"
 export PATH="$FLUTTER_ROOT/bin:$PATH"
 flutter --version
 flutter config --no-analytics
