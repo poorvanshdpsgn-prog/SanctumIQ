@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'pages/contact_page.dart';
+import 'pages/team_page.dart';
 import 'theme/app_colors.dart';
 import 'theme/app_theme.dart';
 import 'widgets/cyber_grid.dart';
@@ -19,6 +21,10 @@ class SanctumIQApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.dark,
         home: const HomePage(),
+        routes: {
+          '/team': (_) => const TeamPage(),
+          '/contact': (_) => const ContactPage(),
+        },
       );
 }
 
@@ -86,7 +92,10 @@ class _HomePageState extends State<HomePage> {
             const Spacer(),
             if (!mobile) ...[
               _navLink('HOW IT WORKS', 3), _navLink('FEATURES', 4),
-              _navLink('ABOUT', 8), const SizedBox(width: 24),
+              _navLink('ABOUT', 8),
+              TextButton(onPressed: () => Navigator.pushNamed(context, '/team'), child: const Text('TEAM', style: TextStyle(color: AppColors.muted, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700))),
+              TextButton(onPressed: () => Navigator.pushNamed(context, '/contact'), child: const Text('CONTACT', style: TextStyle(color: AppColors.muted, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700))),
+              const SizedBox(width: 12),
               SciButton(label: 'PROTECT WHAT MATTERS', compact: true,
                   onPressed: () => _goTo(7)),
             ] else
@@ -119,6 +128,8 @@ class _HomePageState extends State<HomePage> {
                 child: Align(alignment: Alignment.centerLeft,
                     child: Text(item.$1, style: const TextStyle(
                         color: AppColors.text, letterSpacing: 1.5)))),
+            TextButton(onPressed: () { Navigator.pushNamed(context, '/team'); setState(() => _menuOpen = false); }, child: const Align(alignment: Alignment.centerLeft, child: Text('TEAM', style: TextStyle(color: AppColors.text, letterSpacing: 1.5)))),
+            TextButton(onPressed: () { Navigator.pushNamed(context, '/contact'); setState(() => _menuOpen = false); }, child: const Align(alignment: Alignment.centerLeft, child: Text('CONTACT', style: TextStyle(color: AppColors.text, letterSpacing: 1.5)))),
             SciButton(label: 'SEE THE SYSTEM',
                 onPressed: () => _goTo(7)),
           ]),
