@@ -45,6 +45,12 @@ class SitePageHeader extends StatelessWidget {
                     color: currentPage == 'team' ? AppColors.cyan : AppColors.muted),
               ),
               IconButton(
+                tooltip: 'Hardware health',
+                onPressed: () => _open(context, '/diagnostics'),
+                icon: Icon(Icons.monitor_heart_outlined,
+                    color: currentPage == 'diagnostics' ? AppColors.cyan : AppColors.muted),
+              ),
+              IconButton(
                 tooltip: 'Contact',
                 onPressed: () => _open(context, '/contact'),
                 icon: Icon(Icons.mail_outline,
@@ -53,6 +59,7 @@ class SitePageHeader extends StatelessWidget {
             ] else ...[
               _navLink(context, 'HOME', 'home', _goHome),
               _navLink(context, 'TEAM', 'team', (_) => _open(context, '/team')),
+              _navLink(context, 'HARDWARE HEALTH', 'diagnostics', (_) => _open(context, '/diagnostics')),
               _navLink(context, 'CONTACT', 'contact', (_) => _open(context, '/contact')),
             ],
           ]),

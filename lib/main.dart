@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'pages/contact_page.dart';
+import 'pages/diagnostics_page.dart';
 import 'pages/team_page.dart';
 import 'theme/app_colors.dart';
 import 'theme/app_theme.dart';
@@ -24,6 +25,7 @@ class SanctumIQApp extends StatelessWidget {
         routes: {
           '/team': (_) => const TeamPage(),
           '/contact': (_) => const ContactPage(),
+          '/diagnostics': (_) => const DiagnosticsPage(),
         },
       );
 }
@@ -95,6 +97,7 @@ class _HomePageState extends State<HomePage> {
               _navLink('ABOUT', 8),
               TextButton(onPressed: () => Navigator.pushNamed(context, '/team'), child: const Text('TEAM', style: TextStyle(color: AppColors.muted, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700))),
               TextButton(onPressed: () => Navigator.pushNamed(context, '/contact'), child: const Text('CONTACT', style: TextStyle(color: AppColors.muted, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700))),
+              TextButton(onPressed: () => Navigator.pushNamed(context, '/diagnostics'), child: const Text('HARDWARE HEALTH', style: TextStyle(color: AppColors.cyan, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700))),
               const SizedBox(width: 12),
               SciButton(label: 'PROTECT WHAT MATTERS', compact: true,
                   onPressed: () => _goTo(7)),
@@ -130,6 +133,7 @@ class _HomePageState extends State<HomePage> {
                         color: AppColors.text, letterSpacing: 1.5)))),
             TextButton(onPressed: () { Navigator.pushNamed(context, '/team'); setState(() => _menuOpen = false); }, child: const Align(alignment: Alignment.centerLeft, child: Text('TEAM', style: TextStyle(color: AppColors.text, letterSpacing: 1.5)))),
             TextButton(onPressed: () { Navigator.pushNamed(context, '/contact'); setState(() => _menuOpen = false); }, child: const Align(alignment: Alignment.centerLeft, child: Text('CONTACT', style: TextStyle(color: AppColors.text, letterSpacing: 1.5)))),
+            TextButton(onPressed: () { Navigator.pushNamed(context, '/diagnostics'); setState(() => _menuOpen = false); }, child: const Align(alignment: Alignment.centerLeft, child: Text('HARDWARE HEALTH', style: TextStyle(color: AppColors.cyan, letterSpacing: 1.5)))),
             SciButton(label: 'SEE THE SYSTEM',
                 onPressed: () => _goTo(7)),
           ]),
